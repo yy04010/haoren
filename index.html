@@ -3,200 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>探索未知世界</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>探索新世界</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: white;
-            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 20px;
-            overflow-x: hidden;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            overflow: hidden;
+            position: relative;
         }
         
         .container {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
             max-width: 800px;
-            width: 100%;
-            padding: 50px 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            z-index: -1;
         }
         
         h1 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(90deg, #fff, #e0f7ff, #fff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            animation: shimmer 3s linear infinite;
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
         }
         
-        .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            line-height: 1.6;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .mystery-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 16px;
-            padding: 30px;
-            margin: 30px 0;
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            position: relative;
-        }
-        
-        .mystery-box i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            display: block;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .mystery-text {
+        p {
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.2rem;
-            font-style: italic;
-            opacity: 0.8;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
         }
         
-        .hint {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 15px;
-            border-radius: 12px;
-            margin: 20px 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
+        .btn {
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.3rem;
+            color: white;
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-        }
-        
-        .hint:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
-        
-        .secret-reveal {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            margin-top: 15px;
-        }
-        
-        .secret-reveal.active {
-            max-height: 100px;
-        }
-        
-        .secret-text {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .btn-container {
-            margin: 40px 0 30px;
-            position: relative;
-        }
-        
-        .enter-btn {
-            display: inline-block;
-            padding: 18px 50px;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #a1c4fd);
-            background-size: 300% 300%;
-            color: #333;
-            text-decoration: none;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.4rem;
-            transition: all 0.4s ease;
-            border: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
             position: relative;
             overflow: hidden;
-            animation: gradientShift 4s ease infinite;
         }
         
-        .enter-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            animation: none;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd);
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
         }
         
-        .enter-btn:active {
-            transform: translateY(0) scale(0.98);
+        .btn:active {
+            transform: translateY(0);
         }
         
-        .enter-btn::after {
+        .btn::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(-100%) rotate(45deg);
-            transition: transform 0.6s ease;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
         }
         
-        .enter-btn:hover::after {
-            transform: translateX(100%) rotate(45deg);
-        }
-        
-        .btn-text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+        .btn:hover::after {
+            transform: translateX(0);
         }
         
         .floating-elements {
             position: absolute;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: -1;
         }
         
         .floating-element {
@@ -206,178 +100,88 @@
             animation: float 15s infinite linear;
         }
         
-        .floating-element:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 10%;
-            left: 10%;
-            animation-duration: 20s;
-        }
-        
-        .floating-element:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            left: 80%;
-            animation-duration: 25s;
-        }
-        
-        .floating-element:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            top: 80%;
-            left: 20%;
-            animation-duration: 18s;
-        }
-        
-        .footer {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            text-align: center;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        
         @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(20px, 30px) rotate(90deg); }
-            50% { transform: translate(0, 60px) rotate(180deg); }
-            75% { transform: translate(-20px, 30px) rotate(270deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 40px 25px;
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
             }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .enter-btn {
-                padding: 16px 40px;
-                font-size: 1.2rem;
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
             }
         }
         
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
+        .pulse {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ff8a00;
+            box-shadow: 0 0 0 rgba(255, 138, 0, 0.4);
+            animation: pulse 2s infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 138, 0, 0.4);
             }
-            
-            .subtitle {
-                font-size: 1.1rem;
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 138, 0, 0);
             }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 138, 0, 0);
+            }
+        }
+        
+        .new-domain {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
-    <div class="floating-elements">
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-    </div>
+    <div class="floating-elements" id="floatingElements"></div>
     
     <div class="container">
-        <h1>探索数据内部世界</h1>
-        <p class="subtitle">准备好开始一段神秘的旅程了吗？点击下方按钮，发现惊喜</p >
+        <h1>开启全新体验</h1>
+        <p>点击下方按钮，将带您进入一个全新的世界。<br>准备好开始这段奇妙的旅程了吗？</p >
         
-        <div class="mystery-box">
-            <i class="fas fa-lock"></i>
-            <div class="mystery-text">目标目的地已被加密，点击进入按钮即可解锁</div>
+        <button class="btn" id="redirectBtn">
+            <span class="pulse"></span>
+            立即探索
+        </button>
+        
+        <div class="new-domain">
+
         </div>
-        
-        <div class="hint" id="hintButton">
-            <i class="fas fa-question-circle"></i>
-            <span>点击查看提示</span>
-        </div>
-        
-        <div class="secret-reveal" id="secretReveal">
-            <div class="secret-text">
-                <i class="fas fa-shield-alt"></i> 这是一个安全可靠的网站，内容精彩值得期待！
-            </div>
-        </div>
-        
-        <div class="btn-container">
-            <a href=" " class="enter-btn" id="enterButton">
-                <span class="btn-text">
-                    <i class="fas fa-door-open"></i> 点击进入神秘内部世界
-                </span>
-            </a >
-        </div>
-        
-        <p style="opacity: 0.8; margin-top: 20px;">勇敢的探索者，点击上方按钮开始发发</p >
-    </div>
-    
-    <div class="footer">
-        <p>© 2023 神秘入口 | 隐藏目的地增加探索乐趣</p >
     </div>
 
     <script>
-        // 设置目标网址 - 请修改为你的实际目标网址
-        const targetUrl = "https://lcdi08.cn/mobile";
+        // 创建浮动元素
+        const floatingElements = document.getElementById('floatingElements');
+        for (let i = 0; i < 20; i++) {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            
+            const size = Math.random() * 60 + 20;
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            
+            element.style.left = `${Math.random() * 100}%`;
+            element.style.top = `${Math.random() * 100}%`;
+            
+            element.style.animationDelay = `${Math.random() * 15}s`;
+            element.style.animationDuration = `${Math.random() * 20 + 10}s`;
+            
+            floatingElements.appendChild(element);
+        }
         
-        // 提示按钮交互
-        document.getElementById('hintButton').addEventListener('click', function() {
-            const secretReveal = document.getElementById('secretReveal');
-            secretReveal.classList.toggle('active');
-            
-            if (secretReveal.classList.contains('active')) {
-                this.innerHTML = '<i class="fas fa-eye-slash"></i> <span>隐藏提示</span>';
-            } else {
-                this.innerHTML = '<i class="fas fa-question-circle"></i> <span>点击查看提示</span>';
-            }
-        });
-        
-        // 进入按钮点击事件
-        document.getElementById('enterButton').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // 添加点击效果
-            this.style.transform = 'scale(0.95)';
-            this.style.animation = 'none';
-            
-            // 显示加载状态
-            const originalText = this.querySelector('.btn-text').innerHTML;
-            this.querySelector('.btn-text').innerHTML = '<i class="fas fa-spinner fa-spin"></i> 正在解锁目的地...';
-            
-            // 模拟加载过程
-            setTimeout(() => {
-                this.querySelector('.btn-text').innerHTML = '<i class="fas fa-check"></i> 目的地已解锁！';
-                
-                // 跳转到目标网站
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 800);
-            }, 1500);
-        });
-        
-        // 添加键盘事件支持（按回车键也可跳转）
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('enterButton').click();
-            }
+        // 重定向功能
+        document.getElementById('redirectBtn').addEventListener('click', function() {
+            // 使用window.location.replace()方法，不保留原域名历史记录
+            window.location.replace('https://yy04010.github.io/test');
         });
     </script>
 </body>
